@@ -8,6 +8,8 @@ events = {
     "move" namespace: 'browser', browser: true
     "fire" namespace: 'browser', browser: true
     "leave" namespace: 'browser', browser: true
+    
+    "newMessage" browser: true
 
 }
 

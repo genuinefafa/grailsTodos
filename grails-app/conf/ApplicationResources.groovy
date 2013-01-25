@@ -21,4 +21,7 @@ modules = {
     underscore {
         resource url: 'js/underscore-min.js'
     }
+    knockout {
+        resource url:'js/knockout-2.2.0.js'
+    }   
 }

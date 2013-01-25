@@ -1,4 +1,4 @@
-package chat
+package chatsample
 
 import grails.events.Listener
 
@@ -16,6 +16,9 @@ class ConversationService {
 	@Listener(namespace='browser')
 	void sendMessage(evt){
 		log.info evt.message
+        Message m = new Message();
+        m.mensaje = evt.message;
+        event('newMessage', ["mensaje":m]);
 	}
 
 }

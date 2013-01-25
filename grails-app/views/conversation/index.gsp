@@ -5,7 +5,8 @@
   <title>Grails Backbone Demo: Chat</title>
   <meta name="layout" content="main">
   <r:require modules="conversation"/>
-
+  <r:require modules="knockout"/>
+  
   <r:script disposition="head">
     var todos = ${messages};
   </r:script>
@@ -13,21 +14,24 @@
 $(function(){
   window.grailsEvents = new grails.Events('${createLink(uri: '')}');
 
-  grailsEvents.on("conversation", function(data){
-        console.log(model);
-        
+  grailsEvents.on("newMessage", function(data){
+    console.log("llego: "+data);
   });
 });
 
-$("#newMessage").keypress(function(evt) {
-	console.log(evt.keyCode);
-	if (evt.keyCode == "13") {
-		var message = $("#newMessage")
-		console.log("message will be: " + message.val());
-		console.log(message);
-		grailsEvents.send('sendMessage', {'message' : message.val()}  );	
-	}
-});
+var ChatViewModel = function(){
+    var self = this;
+    self.message = ko.observable("");
+    self.messages = ko.observableArray([]);
+    
+    self.sendMessage = function(){
+        console.log("message will be: " + self.message());
+        grailsEvents.send('sendMessage', {'message' : self.message()});
+        self.message("");
+    }    
+}
+var cvm = new ChatViewModel();
+ko.applyBindings(cvm);
 
   </r:script>
 </head>
@@ -45,7 +49,9 @@ $("#newMessage").keypress(function(evt) {
   <div class="content">
 
     <div id="create-todo">
-      <input id="newMessage" placeholder="Message" type="text"/>
+      <form data-bind="submit: sendMessage">
+        <input placeholder="Message" type="text" data-bind="value: message"/>
+      </form>
       <span class="ui-tooltip-top" style="display:none;">Press Enter to save this task</span>
     </div>
 
