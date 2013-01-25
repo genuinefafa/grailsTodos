@@ -11,6 +11,11 @@ class UrlMappings {
             action = [GET: "list", POST: "save", DELETE: "delete", PUT: "edit"]
         }
 
+
+        "/conversation/$id?"(controller: "conversation") {
+            action = [GET: "list", POST: "save", DELETE: "delete", PUT: "edit"]
+        }
+
         "/"(view: "/index")
         "/game/$playerName"(controller: "game", action: 'board')
         "500"(view: '/error')
