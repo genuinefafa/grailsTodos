@@ -4,6 +4,13 @@ modules = {
         resource url: 'js/todos.coffee'
         resource url: 'css/todos.css'
     }
+	
+	chat {
+		dependsOn 'jquery, grailsEvents, knockout'
+		resource url: 'js/chat.coffee'
+		resource url: 'css/chat.css'
+
+	}
 
     conversation {
         dependsOn 'jquery, grailsEvents' // knockout

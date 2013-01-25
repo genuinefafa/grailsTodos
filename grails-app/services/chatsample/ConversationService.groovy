@@ -16,9 +16,14 @@ class ConversationService {
 	@Listener(namespace='browser')
 	void sendMessage(evt){
 		log.info evt.message
-        Message m = new Message();
-        m.mensaje = evt.message;
-        event('newMessage', ["mensaje":m]);
+        Message m = new Message(text: evt.message);
+        event topic: 'newMessage', data: m
+	}
+
+	@Listener(namespace='browser')
+	void joinConversation(evt){
+		
+		event topic: 'newMessage', data: m
 	}
 
 }

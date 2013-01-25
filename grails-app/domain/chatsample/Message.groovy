@@ -1,5 +1,5 @@
 package chatsample
 
 class Message {
-	String mensaje
+	String text
 }

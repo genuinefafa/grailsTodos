@@ -9,7 +9,7 @@ events = {
     "fire" namespace: 'browser', browser: true
     "leave" namespace: 'browser', browser: true
     
-    "newMessage" browser: true
+    "newMessage" browser: true, timeout: 120
 
 }
 
