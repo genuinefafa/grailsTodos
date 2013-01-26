@@ -56,9 +56,9 @@ grails.project.dependency.resolution = {
             exclude 'resources'
         }
 
-        runtime ":cloud-foundry:1.2.3"
+        //runtime ":cloud-foundry:1.2.3"
         runtime ":hibernate:$grailsVersion"
-        runtime ":rabbitmq:1.0.0"
+        //runtime ":rabbitmq:1.0.0"
 
 
         runtime (":events-si:1.0.M5")
@@ -69,7 +69,6 @@ grails.project.dependency.resolution = {
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
         //runtime ":yui-minify-resources:0.1.4"
-
 
 
         build ":tomcat:$grailsVersion"

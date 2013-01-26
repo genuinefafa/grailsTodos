@@ -9,10 +9,10 @@ class ConversationController {
 	}
 	
 	def list() {
-		def messages = Message.findAll() as JSON
+		def messages = Message.findAllByOwnerOrTo(params.nickname, params.nickname) as JSON
 
 		if (request.getHeader('X-Requested-With') == 'XMLHttpRequest')
-			render(todos)
+			render(messages)
 		else {
 			render view: 'index', model: [messages: messages]
 		}
